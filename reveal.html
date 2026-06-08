@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Little Surprise… ✨</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>" />
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+  <div id="loading-screen">
+    <div class="loader-heart">🎁</div>
+    <div class="loader-text">Preparing your surprise…</div>
+    <div class="loader-dots" style="margin-top:1rem;"><span></span><span></span><span></span></div>
+  </div>
+  <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <div id="page-transition" aria-hidden="true"></div>
+
+  <!-- REVEAL PAGE -->
+  <section class="reveal-page" aria-label="Gift Reveal">
+    <div class="particles-container" aria-hidden="true"></div>
+
+    <!-- Back nav -->
+    <a href="index.html" data-transition style="
+      position:absolute; top:1.5rem; left:1.5rem;
+      font-family:'Jost',sans-serif; font-size:0.85rem;
+      color:var(--text-mid); text-decoration:none;
+      background:var(--glass); backdrop-filter:blur(12px);
+      border:1px solid var(--glass-border);
+      padding:0.5rem 1.2rem; border-radius:100px;
+      z-index:20; transition:0.3s ease;
+    " aria-label="Go back">← Back</a>
+
+    <div class="reveal-content">
+
+      <!-- Step indicator -->
+      <div style="
+        font-family:'Jost',sans-serif;
+        font-size:0.8rem;
+        letter-spacing:0.2em;
+        text-transform:uppercase;
+        color:var(--text-mid);
+        opacity:0.7;
+        margin-bottom:2rem;
+        animation:fadeInDown 0.8s ease 0.2s both;
+      ">Step 1 of 4 &nbsp;·&nbsp; 🎁 The Reveal</div>
+
+      <!-- Gift Box -->
+      <div class="gift-box-wrapper reveal-on-scroll">
+        <span class="gift-box" id="gift-box" role="button" tabindex="0" aria-label="Click to open gift">🎁</span>
+        <div style="
+          font-family:'Jost',sans-serif;
+          font-size:0.8rem;
+          color:var(--text-mid);
+          margin-top:0.5rem;
+          opacity:0.7;
+          letter-spacing:0.05em;
+        ">tap me ✨</div>
+      </div>
+
+      <!-- Typing Text -->
+      <div class="reveal-typing" id="reveal-typing" aria-live="polite"></div>
+      <div class="reveal-sub" id="reveal-sub"></div>
+
+      <!-- Heart decorations -->
+      <div style="font-size:1.5rem;letter-spacing:0.5rem;color:rgba(180,80,200,0.5);margin-bottom:2.5rem;" aria-hidden="true">
+        💖 💕 💖
+      </div>
+
+      <!-- Glass card with message -->
+      <div class="glass-card reveal-on-scroll" style="max-width:480px;margin:0 auto 2.5rem;text-align:center;padding:1.8rem 2rem;">
+        <div style="font-size:2rem;margin-bottom:0.8rem;">✨</div>
+        <p style="
+          font-family:'Cormorant Garamond',serif;
+          font-size:1.15rem;
+          font-style:italic;
+          color:var(--text-dark);
+          line-height:1.7;
+        ">
+          Behind this surprise is a collection of our most cherished memories, moments of laughter, love and pure joy that I never want to forget.
+        </p>
+      </div>
+
+      <!-- CTA Button -->
+      <div class="reveal-on-scroll" id="reveal-cta" style="opacity:0;transition:opacity 0.8s ease;">
+        <a href="memory.html" class="glow-btn" data-transition aria-label="Open next surprise">
+          ✨ OPEN NEXT SURPRISE ✨
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Typing animation
+      const typingEl = document.getElementById('reveal-typing');
+      const subEl    = document.getElementById('reveal-sub');
+      const ctaEl    = document.getElementById('reveal-cta');
+
+      const texts = [
+        'A little surprise is waiting for you…',
+        'Made with love, just for you…',
+        'Ready to feel something beautiful?'
+      ];
+
+      // Type first line
+      FD.typeText(typingEl, [texts[0]], {
+        typingSpeed: 55,
+        loop: false,
+        onComplete: () => {
+          // Then show sub text
+          setTimeout(() => {
+            FD.typeText(subEl, ['Ready to see something special?'], {
+              typingSpeed: 50,
+              loop: false,
+              onComplete: () => {
+                // Show CTA button
+                setTimeout(() => {
+                  ctaEl.style.opacity = '1';
+                }, 600);
+              }
+            });
+          }, 400);
+        }
+      });
+
+      // Gift box keyboard support
+      const gift = document.getElementById('gift-box');
+      gift.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') gift.click();
+      });
+    });
+  </script>
+</body>
+</html>

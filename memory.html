@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Our Memories 💕</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>" />
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+  <div id="loading-screen">
+    <div class="loader-heart">💕</div>
+    <div class="loader-text">Gathering memories…</div>
+    <div class="loader-dots" style="margin-top:1rem;"><span></span><span></span><span></span></div>
+  </div>
+  <button id="dark-mode-toggle" aria-label="Toggle dark mode">🌙</button>
+  <button id="back-to-top" aria-label="Back to top">↑</button>
+  <div id="page-transition" aria-hidden="true"></div>
+
+  <!-- MEMORY PAGE -->
+  <main class="memory-page" aria-label="Memory Lane">
+    <div class="particles-container" aria-hidden="true"></div>
+
+    <!-- Back nav -->
+    <a href="reveal.html" data-transition style="
+      position:absolute; top:1.5rem; left:1.5rem;
+      font-family:'Jost',sans-serif; font-size:0.85rem;
+      color:var(--text-mid); text-decoration:none;
+      background:var(--glass); backdrop-filter:blur(12px);
+      border:1px solid var(--glass-border);
+      padding:0.5rem 1.2rem; border-radius:100px;
+      z-index:20; transition:0.3s ease;
+    ">← Back</a>
+
+    <!-- Step indicator -->
+    <div style="
+      font-family:'Jost',sans-serif;
+      font-size:0.8rem;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color:var(--text-mid);
+      opacity:0.7;
+      margin-bottom:1.5rem;
+      z-index:10;position:relative;
+    ">Step 2 of 4 &nbsp;·&nbsp; 💕 Memory Lane</div>
+
+    <!-- Header -->
+    <div class="memory-header reveal-on-scroll">
+      <h1>Our Story</h1>
+      <p>Every chapter is a treasure</p>
+    </div>
+
+    <!-- Typewriter Messages -->
+    <div class="memory-typewriter" id="memory-typing" aria-live="polite"></div>
+
+    <!-- Quote Cards Grid -->
+    <div class="quotes-grid" role="list">
+
+      <div class="glass-card quote-card reveal-on-scroll" role="listitem">
+        <span class="quote-icon">💎</span>
+        <p>Some memories are priceless. They don't fade — they grow more beautiful with time.</p>
+      </div>
+
+      <div class="glass-card quote-card reveal-on-scroll" role="listitem" style="transition-delay:0.15s">
+        <span class="quote-icon">🌸</span>
+        <p>Some people are unforgettable. The kind whose laughter stays with you long after they've left the room.</p>
+      </div>
+
+      <div class="glass-card quote-card reveal-on-scroll" role="listitem" style="transition-delay:0.3s">
+        <span class="quote-icon">✨</span>
+        <p>And some friendships stay forever — written in the heart, not just in time.</p>
+      </div>
+
+      <div class="glass-card quote-card reveal-on-scroll" role="listitem" style="transition-delay:0.45s">
+        <span class="quote-icon">🌟</span>
+        <p>"A true friend is someone who knows all about you and still loves you." — Elbert Hubbard</p>
+      </div>
+
+      <div class="glass-card quote-card reveal-on-scroll" role="listitem" style="transition-delay:0.6s">
+        <span class="quote-icon">💫</span>
+        <p>In the book of life, the answers aren't in the back. But the best chapters? Those are written with you.</p>
+      </div>
+
+      <div class="glass-card quote-card reveal-on-scroll" role="listitem" style="transition-delay:0.75s">
+        <span class="quote-icon">🎀</span>
+        <p>"Friendship is the only cement that will hold the world together." — Woodrow Wilson</p>
+      </div>
+
+    </div>
+
+    <!-- Divider -->
+    <div style="text-align:center;margin:2rem 0;z-index:10;position:relative;" aria-hidden="true">
+      <span style="font-size:1.5rem;letter-spacing:0.6rem;opacity:0.5;">✦ ✦ ✦</span>
+    </div>
+
+    <!-- Animated Timeline -->
+    <div class="timeline reveal-on-scroll" role="list" aria-label="Our friendship timeline">
+
+      <div class="timeline-item" role="listitem">
+        <div class="timeline-dot" aria-hidden="true">🌟</div>
+        <div class="timeline-body">
+          <h3>The Beginning</h3>
+          <p>The day we met — a coincidence that turned into the best thing ever.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" role="listitem">
+        <div class="timeline-dot" aria-hidden="true">😂</div>
+        <div class="timeline-body">
+          <h3>The Laughter</h3>
+          <p>All the moments we laughed until our sides hurt and tears ran down our faces.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" role="listitem">
+        <div class="timeline-dot" aria-hidden="true">🤝</div>
+        <div class="timeline-body">
+          <h3>Through Everything</h3>
+          <p>You showed up when it mattered most — and that means the world to me.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" role="listitem">
+        <div class="timeline-dot" aria-hidden="true">🌈</div>
+        <div class="timeline-body">
+          <h3>Adventures Together</h3>
+          <p>Every trip, every café, every random outing became an unforgettable adventure.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" role="listitem">
+        <div class="timeline-dot" aria-hidden="true">💖</div>
+        <div class="timeline-body">
+          <h3>Right Now</h3>
+          <p>Still here. Still us. Still the most beautiful friendship I could have wished for.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="reveal-on-scroll" style="text-align:center;z-index:10;position:relative;">
+      <div style="
+        font-family:'Cormorant Garamond',serif;
+        font-style:italic;
+        font-size:1.1rem;
+        color:var(--text-mid);
+        margin-bottom:2rem;
+      ">
+        You've been so patient… the best part is almost here 🌸
+      </div>
+      <a href="gallery.html" class="glow-btn" data-transition aria-label="Reveal memories">
+        ❤️ REVEAL MEMORIES ❤️
+      </a>
+    </div>
+
+    <!-- Bottom spacer -->
+    <div style="height:3rem;"></div>
+
+  </main>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Typewriter on memory page
+      const el = document.getElementById('memory-typing');
+      if (el && window.FD) {
+        FD.typeText(el, [
+          'Some memories are priceless…',
+          'Some people are unforgettable…',
+          'And some friendships stay forever. ❤️'
+        ], {
+          typingSpeed: 55,
+          deletingSpeed: 30,
+          pauseAfter: 2200,
+          loop: true,
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
